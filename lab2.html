@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+          "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Extracting Data from Wikipedia</title>
+  </head>
+
+  <body>
+    <div style="text-align: center;">
+      <h1>Programming lab 2: Extracting Data from Wikipedia</h1>
+    </div>
+
+    <h3>TA: Andrés Ortega</h3>
+    
+
+    <h3>Introduction</h3>
+
+    <p>Various <a href="https://www.wikipedia.org/">Wikipedia</a> articles count
+       with a small table at the top right corner of the screen named
+       <a href="https://en.wikipedia.org/wiki/Help:Infobox">infobox</a>.
+       The infobox cointains short data that may be shared with other
+       articles such as birth date in the case of people or population in the case of
+       countries.<br/>
+       Your task for this programming lab is to extract this data and
+       convert it into a <a href="https://en.wikipedia.org/wiki/Comma-separated_values">
+       CSV</a> file.</p>
+
+    <h3>Assignment (80%)</h3>
+
+    <p>Download all pages from the category <q>20th-century mathematicians</q> from
+       the <a href="https://en.wikipedia.org/wiki/Special:Export">export pages</a> tool
+       and write a program that does the following:</p>
+    <ul>
+      <li> (70%) Read the downloaded <a href="https://en.wikipedia.org/wiki/XML">XML</a>
+        file and output a CSV file named <tt>infoboxData.csv</tt> with the format:
+        <pre>&lt;name&gt;,&lt;birth date&gt;,&lt;death place&gt;,&lt;birth place&gt;,&lt;death place&gt;,&lt;alma mater&gt;,&lt;fields&gt;</pre>
+        using the information available from the pages infoboxes.
+        If there is no information available for a given field (e.g. there is no infobox)
+        the corresponding field should be left blank. You might find
+        <a href="https://hackage.haskell.org/package/MissingH-1.4.0.1/docs/Data-CSV.html">
+          Data.CSV</a> and
+        <a href="http://hackage.haskell.org/package/regex-tdfa-1.2.3/docs/Text-Regex-TDFA.html">
+          Text.Regex.TDFA</a> useful.</li>
+      <li> (10%)
+        <ul>
+          <li>Your lab will be tested using the <code>-Wall</code>,
+            <code>-Wmissing-local-signatures</code> and
+            <code>-Wmissing-signatures</code> options.</li>
+          <li>Annotate (in English) your source code using
+            <a href="http://hackage.haskell.org/package/haddock">Haddock</a>.
+            Documentation should explain your solution for the assignment.</li>
+          <li>Improve your implementation with
+            <a href="https://github.com/ndmitchell/hlint">HLint</a>.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Examples</h3>
+    <pre>
+      $ ghc extractData.hs
+      $ ./extractData wiki.xml
+      $ head cleanData.csv
+      "Name","Birth date","Death date","Birth place","Death place","Alma mater","Fields"
+      "Germund Dahlquist","1925/1/16","2005/2/8","Uppsala","Stockholm","Stockholm University","Mathematics"
+      "Tobias Dantzig",,,,,,
+      "Ingrid Daubechies","1954/8/17",,"Belgium",,"Vrije Universiteit Brussel","Mathematician"
+      "Chandler Davis","1926/08/12",,"Ithaca/New York",,"Harvard University",
+      "Philip Dawid","1946/02/01",,,,"University of Cambridge","Bayesian statistics"
+      "Georges de Rham","1903/09/10","1990/10/09","Roche/Vaud","Lausanne","University of Paris","Mathematics"
+      "Karel deLeeuw","1930/2/20",,"Chicago/Illinois","Stanford/California","Princeton University","Mathematics"
+      "Pierre Deligne","1944/10/03",,"Etterbeek/Belgium",,"Université libre de Bruxelles","Mathematics"
+      "Jan Denef",,,,,,
+      "Arnaud Denjoy","1884/01/05","1974/01/21","Auch/Gers","Paris",,"Mathematics"
+    </pre>
+
+    <h3>Clean code (10%)</h3>
+
+    <p>Before submitting your code, which includes your README, clean it
+      up! Clean code:</p>
+    <ul>
+      <li>Does not have long lines (at most 80 columns).</li>
+
+      <li>Has an uniformly indentation (we recommended two
+        characters).</li>
+
+      <li>Has a consistent layout.</li>
+
+      <li>Has type signatures for everything (included
+        <code>where</code>-clauses and <code>let</code>-definitions).</li>
+
+      <li>Has good comments.</li>
+
+      <li>Has no junk (unused code, commented code, unnecessary code).</li>
+
+      <li>Has no overly complicated function definitions.</li>
+
+      <li>Does not contain any repetitive code.</li>
+
+      <li>Has no tabs.</li>
+
+      <li>Has no unnecessary spaces at the end of a line, or empty lines
+        at the end of a file. (See:
+        <a href="http://www1.eafit.edu.co/asr/tips-and-tricks.html#fixing-trailing-hitespace-issues">
+          Fixing trailing whitespace issues with Emacs </a>).
+      </li>
+
+      <li>Has spell-checked comments.</li>
+    </ul>
+
+    <h3>Submission (10%)</h3>
+
+    <p>Submission is electronic. Send an email to
+      <tt>asr(at)eafit(dot)edu(dot)co</tt> and
+      <tt>aortega7(at)eafit(dot)edu(dot)co</tt> and attach a compressed
+      file (.zip or .tar.gz) with your solution.</p>
+
+    <p>Your submission has to include the following:</p>
+
+    <ul>
+      <li><tt>extractData.hs</tt>, a Haskell module file with your
+        solution for the assignment.</li>
+
+      <li>
+        <tt>README</tt> (or <tt>README.md</tt>), a file containing at
+        least the following information.
+
+        <ul>
+          <li>The name of your program.</li>
+
+          <li>Your name(s).</li>
+
+          <li>A general description of your program.</li>
+
+          <li>Information on how to use your program.</li>
+
+          <li>GHC and Haskell platform versions used</li>
+        </ul>
+      </li>
+
+      <li>Do not include any other files.</li>
+    </ul>
+
+    <h3>Notes</h3>
+
+    <ul>
+      <li>The programming lab may either be solved on your own, or jointly
+        with one other student taking the course.</li>
+
+      <li>You are to use the Haskell Platform ≥ 8.4.3 or GHC[i] ≥
+        8.4.3.</li>
+    </ul>
+
+
+    <hr/>
+
+    <table style="width:100%">
+      <tr>
+        <td><a href=
+               "http://www1.eafit.edu.co/asr/courses/automata-CM0081/">
+            Automata and formal languages - CM0081</a></td>
+
+        <td style="text-align:right;"><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" /></a></td>
+      </tr>
+    </table>
+  </body>
+</html>
