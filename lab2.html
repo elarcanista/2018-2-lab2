@@ -38,7 +38,7 @@
     <ul>
       <li> (70%) Read the downloaded <a href="https://en.wikipedia.org/wiki/XML">XML</a>
         file and output a CSV file named <tt>infoboxData.csv</tt> with the format:
-        <pre>&lt;name&gt;,&lt;birth date&gt;,&lt;death place&gt;,&lt;birth place&gt;,&lt;death place&gt;,&lt;alma mater&gt;,&lt;fields&gt;</pre>
+        <pre>&lt;name&gt;,&lt;birth date&gt;,&lt;death date&gt;,&lt;birth place&gt;,&lt;death place&gt;,&lt;alma mater&gt;,&lt;fields&gt;</pre>
         using the information available from the pages infoboxes.
         If there is no information available for a given field (e.g. there is no infobox)
         the corresponding field should be left blank. You might find
@@ -64,7 +64,7 @@
     <pre>
       $ ghc extractData.hs
       $ ./extractData wiki.xml
-      $ head cleanData.csv
+      $ head infoboxData.csv
       "Name","Birth date","Death date","Birth place","Death place","Alma mater","Fields"
       "Germund Dahlquist","1925/1/16","2005/2/8","Uppsala","Stockholm","Stockholm University","Mathematics"
       "Tobias Dantzig",,,,,,
