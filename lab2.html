@@ -37,11 +37,15 @@
        and write a program that does the following:</p>
     <ul>
       <li> (70%) Read the downloaded <a href="https://en.wikipedia.org/wiki/XML">XML</a>
-        file and output a CSV file named <tt>infoboxData.csv</tt> with the format:
+        file and with the information of the infoboxes in it output a CSV file named
+        <tt>infoboxData.csv</tt> with the format:
         <pre>&lt;name&gt;,&lt;birth date&gt;,&lt;death date&gt;,&lt;birth place&gt;,&lt;death place&gt;,&lt;alma mater&gt;,&lt;fields&gt;</pre>
-        using the information available from the pages infoboxes.
+
         If there is no information available for a given field (e.g. there is no infobox)
-        the corresponding field should be left blank. You might find
+        the corresponding field should be left blank.<br/>
+        If there are multiple entries for a single field (e.g. more than one field of study)
+        your program should put "(Various)" as the field value.<br/>
+        You might find
         <a href="https://hackage.haskell.org/package/MissingH-1.4.0.1/docs/Data-CSV.html">
           Data.CSV</a> and
         <a href="http://hackage.haskell.org/package/regex-tdfa-1.2.3/docs/Text-Regex-TDFA.html">
